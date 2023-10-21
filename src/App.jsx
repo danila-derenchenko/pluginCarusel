@@ -3,6 +3,8 @@ import './App.css';
 
 const App = () => {
 
+  const [ styleRotate, setStyleRotate ] = useState({})
+
   const getRandomColorValue = () => {
     var colorValue = Math.floor(Math.random() * 256).toString(16);
     return colorValue.length == 1 ? "0" + colorValue : colorValue;
@@ -35,11 +37,22 @@ const App = () => {
     return segments
   }
 
+  const startRotate = () => {
+    let rotate = 0
+    while(rotate != 560) {
+      rotate += 1
+      setTimeout(() => {
+        setStyleRotate({ transform: `rotate(${rotate}deg)`, transitionDuration: `5s` })
+      }, 50)
+    }
+  }
+
   return (
     <div className="App">
-      <div className="carusel">
+      <div className="carusel" style={styleRotate}>
         {renderSegments()}
       </div>
+      <button onSubmit={(evt) => evt.preventDefault} onClick={startRotate} className="caruselStartRotate">Крутить барабан! </button>
     </div>
   );
 }
