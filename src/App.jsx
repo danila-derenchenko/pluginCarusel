@@ -38,12 +38,17 @@ const App = () => {
   }
 
   const startRotate = () => {
+
+    let min = 360
+    let max = 680
+    let rotateFinish = Math.floor(Math.random() * (max - min)) + min
     let rotate = 0
-    while(rotate != 560) {
+
+    while(rotate != rotateFinish) {
       rotate += 1
       setTimeout(() => {
         setStyleRotate({ transform: `rotate(${rotate}deg)`, transitionDuration: `5s` })
-      }, 50)
+      }, 30)
     }
   }
 
@@ -52,7 +57,7 @@ const App = () => {
       <div className="carusel" style={styleRotate}>
         {renderSegments()}
       </div>
-      <button onSubmit={(evt) => evt.preventDefault} onClick={startRotate} className="caruselStartRotate">Крутить барабан! </button>
+      <button onClick={startRotate} className="caruselStartRotate">Крутить барабан ! </button>
     </div>
   );
 }

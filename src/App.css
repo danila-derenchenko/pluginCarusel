@@ -6,11 +6,16 @@
 
 body {
     background-color: #FFF;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.App {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 100vh;
-    overflow: hidden;
 }
 
 .carusel {
@@ -41,4 +46,16 @@ body {
     font-family: sans-serif;
     color: #FFF;
     left: 135px;
+}
+
+.caruselStartRotate {
+    margin-top: 70px;
+    padding: 15px 20px;
+    border: none;
+    background-color: #1F2937;
+    color: #FFF;
+}
+
+.caruselStartRotate:hover {
+    cursor: pointer;
 }
