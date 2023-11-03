@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import Popap from './components/popap';
 import './App.css';
 
 const App = () => {
 
   const [ styleRotate, setStyleRotate ] = useState({})
+
+  const sectorStop = 1
 
   const getRandomColorValue = () => {
     var colorValue = Math.floor(Math.random() * 256).toString(16);
@@ -40,15 +43,15 @@ const App = () => {
   const startRotate = () => {
 
     let min = 360
-    let max = 680
-    let rotateFinish = Math.floor(Math.random() * (max - min)) + min
+
+    let rotateFinish = 1080 + 90 - ((sectorStop - 1) * 45)
     let rotate = 0
 
     while(rotate != rotateFinish) {
       rotate += 1
       setTimeout(() => {
         setStyleRotate({ transform: `rotate(${rotate}deg)`, transitionDuration: `5s` })
-      }, 30)
+      }, 10)
     }
   }
 
@@ -57,7 +60,7 @@ const App = () => {
       <div className="carusel" style={styleRotate}>
         {renderSegments()}
       </div>
-      <button onClick={startRotate} className="caruselStartRotate">Крутить барабан ! </button>
+      <button onClick={startRotate} className="caruselStartRotate">Крутить барабан !</button>
     </div>
   );
 }
