@@ -1,7 +1,9 @@
 
 const Popap = () => {
     return (
-        <div className="popap"></div>
+        <div className="popap">
+            
+        </div>
     )
 }
 

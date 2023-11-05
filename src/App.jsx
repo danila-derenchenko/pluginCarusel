@@ -56,12 +56,15 @@ const App = () => {
   }
 
   return (
-    <div className="App">
+    <div className="popap_wrapper">
+      <Popap />
+    </div>
+    /* <div className="App">
       <div className="carusel" style={styleRotate}>
         {renderSegments()}
       </div>
       <button onClick={startRotate} className="caruselStartRotate">Крутить барабан !</button>
-    </div>
+    </div> */
   );
 }
 
