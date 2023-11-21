@@ -4,7 +4,7 @@ import './App.css';
 
 const App = () => {
 
-  const [ styleRotate, setStyleRotate ] = useState({})
+  const [styleRotate, setStyleRotate] = useState({})
 
   const sectorStop = 1
 
@@ -12,12 +12,12 @@ const App = () => {
     var colorValue = Math.floor(Math.random() * 256).toString(16);
     return colorValue.length == 1 ? "0" + colorValue : colorValue;
   }
-  
+
   const generateRandomColorCode = () => {
     var red = getRandomColorValue();
     var green = getRandomColorValue();
     var blue = getRandomColorValue();
-  
+
     return "#" + red + green + blue;
   }
 
@@ -26,7 +26,7 @@ const App = () => {
     const segments = []
     let rotateSegment = 0;
 
-    for(let i = 0; i < countSegments; i++) {
+    for (let i = 0; i < countSegments; i++) {
       const styleSegment = {
         backgroundColor: generateRandomColorCode(),
         transform: `rotate(${rotateSegment}deg)`
@@ -47,7 +47,7 @@ const App = () => {
     let rotateFinish = 1080 + 90 - ((sectorStop - 1) * 45)
     let rotate = 0
 
-    while(rotate != rotateFinish) {
+    while (rotate != rotateFinish) {
       rotate += 1
       setTimeout(() => {
         setStyleRotate({ transform: `rotate(${rotate}deg)`, transitionDuration: `5s` })
@@ -56,15 +56,13 @@ const App = () => {
   }
 
   return (
-    <div className="popap_wrapper">
-      <Popap />
-    </div>
-    /* <div className="App">
+    <div className="App">
+      <Popap className="app_popap" />
       <div className="carusel" style={styleRotate}>
         {renderSegments()}
       </div>
       <button onClick={startRotate} className="caruselStartRotate">Крутить барабан !</button>
-    </div> */
+    </div>
   );
 }
 
