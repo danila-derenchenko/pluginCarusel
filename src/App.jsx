@@ -4,9 +4,10 @@ import './App.css';
 
 const App = () => {
 
-  const [styleRotate, setStyleRotate] = useState({})
+  const [styleRotate, setStyleRotate] = useState({}) // стили для вращения барабана
+  const [visibleCarusel, setVisibleCarusel] = useState({}) // управление видимостью барабана
 
-  const sectorStop = 1
+  const sectorStop = 3
 
   const getRandomColorValue = () => {
     var colorValue = Math.floor(Math.random() * 256).toString(16);
@@ -53,15 +54,21 @@ const App = () => {
         setStyleRotate({ transform: `rotate(${rotate}deg)`, transitionDuration: `5s` })
       }, 10)
     }
+    setTimeout(() => {
+      setVisibleCarusel({
+        animation: "fadeOutFromNone 1.5s"
+      })
+    }, 6000)
   }
-
   return (
     <div className="App">
-      <Popap className="app_popap" />
-      <div className="carusel" style={styleRotate}>
-        {renderSegments()}
+      <div className="carusel_wrapper" style={visibleCarusel}>
+        <div className="carusel" style={styleRotate}>
+          {renderSegments()}
+        </div>
+        <button onClick={startRotate} className="caruselStartRotate">Крутить барабан !</button>
       </div>
-      <button onClick={startRotate} className="caruselStartRotate">Крутить барабан !</button>
+      {/* <Popap /> */}
     </div>
   );
 }
