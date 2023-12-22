@@ -3,9 +3,97 @@ import Popap from './components/popap';
 import './App.css';
 
 const App = () => {
+  
+  const [ styleRotate, setStyleRotate ] = useState({})
+  const [visibleCarusel, setVisibleCarusel] = useState({})
+  const [ prizes, setPrizes ] = useState([
+    {
+      text: "Скидка 10%",
+      color: "hsl(197 30% 43%)",
+      isStopSector: false
+    },
+    { 
+      text: "Дизайн в подарок",
+      color: "hsl(173 58% 39%)",
+      isStopSector: false
+    },
+    { 
+      text: "Второй сайт бесплатно",
+      color: "hsl(43 74% 66%)",
+      isStopSector: false
+    },
+    {
+      text: "Скидка 50%",
+      color: "hsl(27 87% 67%)",
+      isStopSector: true
+    },
+    {
+      text: "Блог в подарок",
+      color: "hsl(12 76% 61%)",
+      isStopSector: false
+    },
+    {
+      text: "Скидок нет",
+      color: "hsl(350 60% 52%)",
+      isStopSector: false
+    },
+    {
+      text: "Таргет в подарок",
+      color: "hsl(91 43% 54%)",
+      isStopSector: false
+    },
+    {
+      text: "Скидка 30% на всё",
+      color: "hsl(140 36% 74%)",
+      isStopSector: false
+    }
+  ])
 
-  const [styleRotate, setStyleRotate] = useState({}) // стили для вращения барабана
+  const prizeSlice = 360 / prizes.length
+  const prizeOffset = Math.floor(180 / prizes.length)
+  const stopSector = 2
+
+  const startRotate = () => {
+
+    let rotateFinish = 2520 + (prizeSlice * (stopSector - 1))
+    let rotate = 0
+
+    while (rotate != rotateFinish) {
+      rotate += 1
+      setTimeout(() => {
+        setStyleRotate({ transform: `rotate(${rotate}deg)`, transitionDuration: `5s` })
+      }, 10)
+    }
+  }
+
+  return (
+    <div className="caruselFortuna">
+      <div class="deal-wheel">
+        <div className="rotate" style={styleRotate}>
+        <ul class="spinner" style={{ background: `conic-gradient(
+    from -90deg,${prizes
+      // получаем цвет текущего сектора
+      .map((el, i) => `${el.color} 0 ${(100 / prizes.length) * (prizes.length - i)}%`)
+      .reverse()
+    })` }}>
+          {prizes.map((el, index) => {
+            const rotationEl = ((prizeSlice * index) * -1) - prizeOffset
+            return (<li key={index} className='prize' style={{ rotate: `${rotationEl}deg`}}>
+            <span className="text">{el.text}</span>
+          </li>)
+          })}
+        </ul>
+        </div>
+        <div class="ticker"></div>
+        <button class="btn-spin" onClick={startRotate}>Крутить барабан</button>
+      </div>
+      <Popap isVisible={visibleCarusel}/>
+    </div>
+  )
+
+  /*const [styleRotate, setStyleRotate] = useState({}) // стили для вращения барабана
   const [visibleCarusel, setVisibleCarusel] = useState({}) // управление видимостью барабана
+  const [visiblePopap, setVisiblePopap] = useState(false) // управление видимостью попапа
 
   const sectorStop = 3
 
@@ -56,8 +144,14 @@ const App = () => {
     }
     setTimeout(() => {
       setVisibleCarusel({
-        animation: "fadeOutFromNone 1.5s"
-      })
+        animation: "fadeOutFromNone 3s"
+      });
+      setVisiblePopap(true);
+      setTimeout(() => {
+        setVisibleCarusel({
+          display: "none"
+        });
+      }, 2900)
     }, 6000)
   }
   return (
@@ -68,9 +162,9 @@ const App = () => {
         </div>
         <button onClick={startRotate} className="caruselStartRotate">Крутить барабан !</button>
       </div>
-      {/* <Popap /> */}
+      <Popap isVisible={visiblePopap} />
     </div>
-  );
+  );*/
 }
 
 export default App;
