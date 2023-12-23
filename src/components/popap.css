@@ -8,12 +8,12 @@
 
 .popap_wrapper {
     transition-duration: 1s;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: 'showPopap 3s';
 }
 
 .popap_name_discond {
@@ -22,4 +22,11 @@
 
 .popap_not_visible {
     display: none;
+}
+
+@media screen and (max-width: 550px) {
+    .popap {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
 }
