@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/pluginCarusel/static/css/main.f22c8a1c.css",
+    "main.js": "/pluginCarusel/static/js/main.a5006ee4.js",
+    "static/js/787.0edb1ff6.chunk.js": "/pluginCarusel/static/js/787.0edb1ff6.chunk.js",
+    "index.html": "/pluginCarusel/index.html",
+    "main.f22c8a1c.css.map": "/pluginCarusel/static/css/main.f22c8a1c.css.map",
+    "main.a5006ee4.js.map": "/pluginCarusel/static/js/main.a5006ee4.js.map",
+    "787.0edb1ff6.chunk.js.map": "/pluginCarusel/static/js/787.0edb1ff6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f22c8a1c.css",
+    "static/js/main.a5006ee4.js"
+  ]
+}
